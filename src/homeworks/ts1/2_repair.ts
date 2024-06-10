@@ -39,7 +39,9 @@ export type Data = {
 const getDataAmount = (data: Data): number => {
   switch (data.type) {
     case 'Money':
-      return data.value.amount;
+      if ('amount' in data.value) {
+        return data.value.amount;
+      }
 
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
